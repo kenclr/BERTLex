@@ -2,7 +2,8 @@
 
 BERTological Lexicography for Prepositions
 
-This is the code accompanying our paper 
+This is the code accompanying the paper [_BERTological Lexicography for Prepositions}_][(https://aclanthology.org/2021.blackboxnlp-1.43/](http://www.clres.com/online-papers/BERTLex.pdf)).
+
 To cite:
 ```
 @techreport{TagPDEP2SST,
