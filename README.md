@@ -12,8 +12,7 @@ To cite:
     institution = {CL Research},
     address = {Damascus, MD 20872 USA},
     year = {2022},
-    url = {http://www.clres.com/online-papers/BERTLex.pdf},
-    doi = 10.13140/RG.2.2.33143.50089
+    url = {http://www.clres.com/online-papers/BERTLex.pdf}
 }
 ```
 
