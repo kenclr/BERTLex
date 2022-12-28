@@ -1,2 +1,2 @@
-# BERTLex
+# Introduction
 BERTological Lexicography for Prepositions
