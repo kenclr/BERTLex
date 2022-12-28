@@ -46,3 +46,19 @@ URL http://www.clres.com/online-papers/PrepWSD2013.pdf.
 - [4] Ken Litkowski. Pattern Dictionary of English Prepositions. In Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 1274–1283, Baltimore,
 Maryland, June 2014. Association for Computational Linguistics. URL
 http://www.aclweb.org/anthology/P14-1120.
+- [5] Ken Litkowski. BERTological Lexicography for Prepositions. Working
+Paper 22-02, CL Research, Damascus, MD 20872 USA, December 2022.
+URL http://www.clres.com/online-papers/BERTLex.pdf.
+To cite:
+```
+@techreport{TagPDEP2SST,
+    title = {BERTological Lexicography for Prepositions},
+    number = {22-02},
+    author = {Litkowski, Ken},
+    institution = {CL Research},
+    address = {Damascus, MD 20872 USA},
+    year = {2022},
+    url = {http://www.clres.com/online-papers/BERTLex.pdf}
+}
+```
+
