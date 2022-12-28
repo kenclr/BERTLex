@@ -10,7 +10,7 @@ using its methods, adding the further property of keeping a link to the
 instances in the Pattern Dictionary of English Prepositions (PDEP,
 Litkowski (2014)) [4], enabling further lexicographic analysis.
 
-This is the code accompanying the paper: [Citation](#citation) [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
+This is the code accompanying the paper (see [Citation](#citation)) [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
 
 To cite:
 ```
