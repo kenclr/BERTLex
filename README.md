@@ -2,7 +2,7 @@
 
 BERTological Lexicography for Prepositions
 
-This is the code accompanying the paper [_BERTological Lexicography for Prepositions}_][(https://aclanthology.org/2021.blackboxnlp-1.43/](http://www.clres.com/online-papers/BERTLex.pdf)).
+This is the code accompanying the paper [5] [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
 
 To cite:
 ```
@@ -50,7 +50,9 @@ http://www.aclweb.org/anthology/P14-1120.
 - [5] Ken Litkowski. BERTological Lexicography for Prepositions. Working
 Paper 22-02, CL Research, Damascus, MD 20872 USA, December 2022.
 URL http://www.clres.com/online-papers/BERTLex.pdf.
-To cite:
+
+# Citation
+To cite the paper
 ```
 @techreport{TagPDEP2SST,
     title = {BERTological Lexicography for Prepositions},
