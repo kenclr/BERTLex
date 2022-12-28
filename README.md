@@ -4,7 +4,6 @@ BERTological Lexicography for Prepositions
 
 This is the code accompanying our paper 
 To cite:
-
 ```
 @techreport{TagPDEP2SST,
     title = {BERTological Lexicography for Prepositions},
@@ -17,6 +16,7 @@ To cite:
     doi = 10.13140/RG.2.2.33143.50089
 }
 ...
+
 
 # Abstract
 
