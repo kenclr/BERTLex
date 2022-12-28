@@ -15,7 +15,7 @@ To cite:
     url = {http://www.clres.com/online-papers/BERTLex.pdf},
     doi = 10.13140/RG.2.2.33143.50089
 }
-...
+```
 
 
 # Abstract
