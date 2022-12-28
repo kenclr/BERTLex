@@ -9,7 +9,8 @@ resource and additional perspective that might assist in usual lexicographic pro
 using its methods, adding the further property of keeping a link to the
 instances in the Pattern Dictionary of English Prepositions (PDEP,
 Litkowski (2014)) [4], enabling further lexicographic analysis.
-This is the code accompanying the paper [5] [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
+
+This is the code accompanying the paper [5](#citation) [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
 
 To cite:
 ```
