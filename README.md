@@ -21,8 +21,7 @@ Our code builds on the code from the G&S paper, which provides a link to its cod
 - <a id="1">[1]</a> Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
 BERT: Pre-training of deep bidirectional transformers for language understanding. In Proceedings of the 2019 Conference of the North American
 Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pages 4171–4186,
-Minneapolis, Minnesota, June 2019. Association for Computational Linguistics. doi: 10.18653/v1/N19-1423. URL https://aclanthology.org/
-N19-1423.
+Minneapolis, Minnesota, June 2019. Association for Computational Linguistics. doi: 10.18653/v1/N19-1423. URL https://aclanthology.org/N19-1423.
 - <a id="2">[2]</a> Luke Gessler and Nathan Schneider. BERT has uncommon sense: Similarity ranking for word sense BERTology. In Proceedings of the
 Fourth BlackboxNLP Workshop on Analyzing and Interpreting Neural
 Networks for NLP, pages 539–547, Punta Cana, Dominican Republic, November 2021. Association for Computational Linguistics. doi:
