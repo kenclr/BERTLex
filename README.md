@@ -14,7 +14,7 @@ This is the code accompanying the paper (see [[5]](#5) [Citation](#citation)) [_
 
 # Usage
 ## Initial Setup
-Our code builds on the code from the G&S paper, which provides a link to its code, at https://github.com/lgessler/bert-has-uncommon-sense. You need to implement the steps through its **Setup**. Since we are not implementing all of its steps, you need to pay attention with the differences. In particularly, you need only its **Step 2** (Create a new Anaconda environment: creating the environment with **bhus**) and **Step 3** (Install dependencies: **requirement.txt**). 
+Our code builds on the code from the G&S paper, which provides a link to its code, at https://github.com/lgessler/bert-has-uncommon-sense. You need to implement the steps through its **Setup**. Since we are not implementing all of its steps, you need to pay attention with the differences. In particularly, you need only its **Step 2** (Create a new Anaconda environment: creating the environment with **bhus**) and **Step 3** (Install dependencies: **requirement.txt**). The setup establishes the folders consistent with those of G&S, which also makes use of various functions.
 
 # References
 
