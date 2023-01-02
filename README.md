@@ -13,6 +13,9 @@ Litkowski (2014)) [[4]](#4), enabling further lexicographic analysis.
 This is the code accompanying the paper (see [[5]](#5) [Citation](#citation)) [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
 
 # Usage
+## Data
+While the code included here can be used to develop the dataframe for the preposition predictions, the code and the full data are also contained a zipped file available at https://www.clres.com/online-papers/BERTLex.zip. This includes the tab-separated value file **pdep-bert-base-cased_7.tsv** which can be loading into a dataframe that contains the predictions. In particular, each of the labels in the file identify the corpus instances, the basic data for the lexicographic analyses in the paper.
+
 ## Initial Setup
 Our code builds on the code from the G&S paper, which provides a link to its code, at https://github.com/lgessler/bert-has-uncommon-sense. You need to implement the steps through its **Setup**. Since we are not implementing all of its steps, you need to pay attention with the differences. In particularly, you need only its **Step 2** (Create a new Anaconda environment: creating the environment with **bhus**) and **Step 3** (Install dependencies: **requirement.txt**). The setup establishes the folders consistent with those of G&S, which also makes use of various functions.
 
