@@ -1,6 +1,3 @@
-#
-import os
-os.chdir("C:/Users/Ken/anaconda3/Lib/site-packages/bhus/scripts")
 from pprint import pprint
 from random import shuffle
 
