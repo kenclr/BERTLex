@@ -19,6 +19,10 @@ While the code included here can be used to develop the dataframe for the prepos
 ## Initial Setup
 Our code builds on the code from the G&S paper, which provides a link to its code, at https://github.com/lgessler/bert-has-uncommon-sense. You need to implement the steps through its **Setup**. Since we are not implementing all of its steps, you need to pay attention with the differences. In particularly, you need only its **Step 2** (Create a new Anaconda environment: creating the environment with **bhus**) and **Step 3** (Install dependencies: **requirements.txt**). The setup establishes the folders consistent with those of G&S, which also makes use of various functions.
 
+# Files
+- README.md
+- ranks.py
+
 # References
 
 - <a id="1">[1]</a> Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
