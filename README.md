@@ -21,7 +21,8 @@ Our code builds on the code from the G&S paper, which provides a link to its cod
 
 # Files
 - README.md
-- ranks.py
+- ranks.py: script describing in section 6 (**Overview of Sense Predictions**) of the paper
+- bssp/, scripts/: containing changes to https://github.com/lgessler/bert-has-uncommon-sense
 
 # References
 
