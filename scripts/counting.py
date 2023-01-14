@@ -1,6 +1,3 @@
-import os
-
-import conllu
 import sqlite3
 from collections import Counter
 def dict_factory(cursor, row):
