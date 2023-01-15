@@ -6,18 +6,20 @@ def dict_factory(cursor, row):
         d[col[0]] = row[idx]
     return d
 
+# getting the corpus, as in format_pdep.py
 conn = sqlite3.connect('../data/pdep/SQL/prepcorp.sqlite')
 conn.row_factory = dict_factory
 
 WHITELIST = ['about', 'above', 'across', 'after', 'against', 'among', 'around', 'as', 'at', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'circa', 'despite', 'during', 'except', 'for', 'from', 'in', 'including', 'inside', 'into', 'near', 'of', 'off', 'on', 'onto', 'over', 'per', 'since', 'than', 'through', 'to', 'toward', 'towards', 'under', 'until', 'unto', 'up', 'upon', 'via', 'with', 'without']
 rows = list(conn.execute('SELECT * FROM prepcorp'))
 
+# counts for the three corpora
 count = 0
-odd = Counter()
-mwe = Counter()
-non = Counter()
-off = Counter()
-uncommon = set()
+odd = Counter() # non-prep, adverbs, phrasal verbs
+mwe = Counter() # multiword preposition instances
+non = Counter() # single-word prepositions not used
+off = Counter() # instances with offset character locations
+uncommon = set() # list of single-word prepositions not used
 for num_rows_visited, row in enumerate(rows):
     sense = row['sense']
     source = row['source']
