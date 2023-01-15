@@ -45,7 +45,6 @@ for num_rows_visited, row in enumerate(rows):
     prep_token = row['sentence'][prep_offset:prep_end].strip()
     # Skip if we don't have a match (some offsets are unreliable)
     if prep_token.lower() != row['prep'].lower():
-        #print(row['prep'],' ',row['inst'])
         off[source] += 1
         continue
     count += 1
