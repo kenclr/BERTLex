@@ -56,11 +56,10 @@ print("Off: ", off)
 print("Non: ", non)
 print("Uncommon: ", uncommon)
 
+# adds the sense numbers, appending to the preposition
 senses = Counter()
 for num_rows_visited, row in enumerate(rows):
     prep = row['prep'].lower()
-    #if " " in row['sense']:
-        #continue
     if row['sense'] in ['unk', 'x', 'pv', 'adverb', '1(!)', '']:
         continue
     if row['inst'] in [577203,]:
