@@ -13,7 +13,7 @@ conn.row_factory = dict_factory
 WHITELIST = ['about', 'above', 'across', 'after', 'against', 'among', 'around', 'as', 'at', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'circa', 'despite', 'during', 'except', 'for', 'from', 'in', 'including', 'inside', 'into', 'near', 'of', 'off', 'on', 'onto', 'over', 'per', 'since', 'than', 'through', 'to', 'toward', 'towards', 'under', 'until', 'unto', 'up', 'upon', 'via', 'with', 'without']
 rows = list(conn.execute('SELECT * FROM prepcorp'))
 
-# counts for the three corpora
+# counts for the three corpora, primarily identifying instances that are not used
 count = 0
 odd = Counter() # non-prep, adverbs, phrasal verbs
 mwe = Counter() # multiword preposition instances
