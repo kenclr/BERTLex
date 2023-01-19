@@ -1,3 +1,0 @@
-[submodule "scripts/bert-has-uncommon-sense"]
-	path = scripts/bert-has-uncommon-sense
-	url = https://github.com/lgessler/bert-has-uncommon-sense
