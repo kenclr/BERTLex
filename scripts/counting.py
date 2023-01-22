@@ -74,51 +74,6 @@ def unused(rows):
     print("Non: ", non)
     print("Uncommon: ", uncommon)
 
-# counts for the three corpora, primarily identifying instances that are not used
-"""
-count = 0
-odd = Counter() # non-prep, adverbs, phrasal verbs
-mwe = Counter() # multiword preposition instances
-non = Counter() # single-word prepositions not used
-off = Counter() # instances with offset character locations
-uncommon = set() # list of single-word prepositions not used
-for num_rows_visited, row in enumerate(rows):
-    sense = row['sense']
-    source = row['source']
-    # Skip odd-looking senses
-    if sense in ['unk', 'x', 'pv', 'adverb', '1(!)', '']:
-        odd[source] += 1
-        continue
-    # Skip multiword prepositions like "out of"
-    if ' ' in row['prep']:
-        mwe[source] += 1
-        continue
-    if row['inst'] in [577203,]:
-        odd[source] += 1
-        continue
-    # Only keep preps that are relatively common
-    if row['prep'].lower() not in WHITELIST:
-        non[source] += 1
-        uncommon.add(row['prep'])
-        continue
-    # Index is char-based, so tokenization procedure needs to proceed by first excising the preposition
-    prep_offset = row['preploc']
-    prep_end = row['sentence'].find(' ', prep_offset+1)
-    prep_token = row['sentence'][prep_offset:prep_end].strip()
-    # Skip if we don't have a match (some offsets are unreliable)
-    if prep_token.lower() != row['prep'].lower():
-        off[source] += 1
-        continue
-    count += 1
-
-print(count)
-print("Odd: ", odd)
-print("MWE: ", mwe)
-print("Off: ", off)
-print("Non: ", non)
-print("Uncommon: ", uncommon)
-"""
-
 # adds the sense numbers, appending to the preposition
 # identifying instances with polysemous tags
 senses = Counter()
