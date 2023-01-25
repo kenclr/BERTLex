@@ -16,6 +16,10 @@ cfg = Config(
     bert_layers=[7],
 )
 
+# The next three steps are directly available in the file BERTLex.zip at
+# http://www.clres.com/online-papers/BERTLex.zip
+# They are complete, with the following functions used in creating these files 
+# as well as providing other uses of these file.
 df = pd.read_csv(paths.predictions_tsv_path(cfg), sep="\t", encoding = 'unicode_escape', engine ='python')
 dfranks = pd.read_csv("cache/clres_stats/ranks.tsv", sep="\t")
 dfscores = pd.read_csv("cache/clres_stats/scores.tsv", sep="\t")
