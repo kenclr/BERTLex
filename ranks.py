@@ -29,6 +29,43 @@ def getprep(prep):
     tsv = tsv[: tsv.rfind("/")+1] + prep + "-" + tsv[tsv.rfind("/")+1:]
     return pd.read_csv(tsv, sep="\t", encoding = 'unicode_escape', engine ='python')
 
+def corpanal(df):
+    # For table 3 in section 4, identifying the prediction instances with
+    #   each corpus
+    preds = Counter()
+    for k in range(0,len(df)):
+        label_1 = df.loc[k]["label_1"]
+        if("OEC" in label_1):
+            preds["OEC"] += 1
+        elif("FN" in label_1):
+            preds["FN"] += 1
+        else:
+            preds["CPA"] += 1
+    print(preds)
+    
+def corp2(df):
+    # For table 3 in section 4, identifying the correct predictions as the
+    #   first prediction being correctly
+    import re
+    test = Counter()
+    preds = Counter()
+    correct = Counter()
+    for _, row in df.iterrows():
+        label = row.label
+        tcorp = re.search(":([A-Z]*):",label).group(1)
+        test[tcorp] += 1
+        label = label[:label.index(":")]
+        label_1 = row.label_1
+        corp = re.search("#([A-Z]*)-",label_1).group(1)
+        preds[corp] += 1
+        label_1 = label_1[:label_1.index("#")]
+        if(label_1 == label):
+            correct[corp] += 1
+    print("Test:      ", test)
+    print("Instances: ", preds)
+    print("Correct:   ", correct)
+    return test, preds, correct
+
 def corr(df):
     labels = Counter()
     correct = Counter()
@@ -49,40 +86,6 @@ def corr(df):
     for sense in correct:
         print(sense,str(correct[sense])+"/"+str(labels[sense]))
     #return labels, correct
-
-def corpanal(df):
-    preds = Counter()
-    for k in range(0,len(df)):
-        label_1 = df.loc[k]["label_1"]
-        if("OEC" in label_1):
-            preds["OEC"] += 1
-        elif("FN" in label_1):
-            preds["FN"] += 1
-        else:
-            preds["CPA"] += 1
-    print(preds)
-    
-def corp2(df):
-    import re
-    test = Counter()
-    preds = Counter()
-    correct = Counter()
-    for _, row in df.iterrows():
-        label = row.label
-        tcorp = re.search(":([A-Z]*):",label).group(1)
-        test[tcorp] += 1
-        label = label[:label.index(":")]
-        label_1 = row.label_1
-        corp = re.search("#([A-Z]*)-",label_1).group(1)
-        preds[corp] += 1
-        label_1 = label_1[:label_1.index("#")]
-        if(label_1 == label):
-            correct[corp] += 1
-       #print(label_1)
-    print("Test:      ", test)
-    print("Instances: ", preds)
-    print("Correct:   ", correct)
-    return test, preds, correct
 
 """
 pdep = {}

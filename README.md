@@ -21,7 +21,7 @@ Our code builds on the code from the G&S paper, which provides a link to its cod
 
 # Files
 - README.md
-- ranks.py: script describing in section 6 (**Overview of Sense Predictions**) of the paper
+- ranks.py: Makes available to the **BERTLex.zip** containing the predictions for all test queries and functions used to create tables in sections section 4 (**Identifying the Analysands**) and section 6 (**Overview of Sense Predictions**) of the paper, with functions used in creating these tables.
 - bssp/, scripts/: containing changes to https://github.com/lgessler/bert-has-uncommon-sense
 
 # References
