@@ -66,6 +66,44 @@ def corp2(df):
     print("Correct:   ", correct)
     return test, preds, correct
 
+def sense_anal(df):
+    """
+    Identifies the senses in 'label' field of 'df' and counts the number of
+    instances in 'df' returning the senses and the counts.
+    """
+    senses = set()
+    scnt = Counter()
+    total = 0
+    for _, row in df.iterrows():
+        label = row.label
+        source = label
+        source = source[source.index(":")+1:]
+        label = label[:label.index(":")]
+        senses.add(label)
+        scnt[label] += 1
+        total += 1
+    print("Total Count: ", total)
+    return senses, scnt
+
+def prep_anal(df,scnt):
+    """
+    Identifies the prepositions in the dataframe, with the list of senses
+    and the number of test queries with each sense. Requires the sense
+    counts from sense_anal
+    """
+    result = {}
+    lemmas = df['lemma'].unique()
+    for i in lemmas:
+        result[i] = {}
+    for i in scnt:
+        upd = {}
+        prep = i[:i.index("_")]
+        sense = i[i.index("_")+1:]
+        value = scnt[i]
+        upd[sense] = value
+        result[prep].update(upd)
+    return result
+    
 def corr(df):
     labels = Counter()
     correct = Counter()
