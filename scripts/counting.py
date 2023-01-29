@@ -96,6 +96,27 @@ def defs(drows):
     print("PDEP senses: " , str(count))
     return defs
 
+#tsv = "cache\clres_stats\pdep_senses.tsv"
+tsv = "..\cache\clres_stats\pdep_senses.tsv"
+
+def with_insts():
+    # Read the 'tsv' file into 'insts', iterate through it to create the set
+    #   to identify the senses that have instances in PDEP
+    used = set()
+    senses = pd.read_csv(tsv, sep="\t")
+    for _, row in senses.iterrows():
+        used.add(row["'sense'"])
+    return used
+
+def no_insts(defs,used):
+    # identifying PDEP senses that have no corpus instances
+    unused = set()
+    for i in defs:
+        if i in used:
+            continue
+        unused.add(i)
+    return unused
+
 # adds the sense numbers, appending to the preposition
 # identifying instances with polysemous tags
 senses = Counter()
