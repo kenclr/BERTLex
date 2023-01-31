@@ -117,6 +117,25 @@ def no_insts(defs,used):
         unused.add(i)
     return unused
 
+# tributary prepositions in PDEP
+trib = ["'cept", "'gainst", "'mongst", "'pon", 'afore', 'agin', 'amidst', 'betwixt', 'fore', 'frae', 'neath', 'nigh', "o'", "o'er", 'outta', 'outwith', 'sans', "thro'", 'thru', 'thwart', 'till', 'toward', 'upon', 'while']
+
+def unused_defs(unused,trib):
+    # identify which unused definitions have no instances: those with
+    #   tributary prepositions and those that have regular prepositions
+    #   that have senses with no instances in any of the corpora
+    tribdefs = Counter()
+    pdepdefs = Counter()
+
+    for i in unused:
+        prep = i[:i.index("_")]
+        #print(prep)
+        if prep in trib:
+            tribdefs[prep] += 1
+        else:
+            pdepdefs[prep] += 1
+    return tribdefs, pdepdefs
+    
 # adds the sense numbers, appending to the preposition
 # identifying instances with polysemous tags
 senses = Counter()
