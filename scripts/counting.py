@@ -156,6 +156,27 @@ def mwe(defs):
             mwe_ents.add(i[:i.index("_")])
     return mwe_ents, mwe_sens
 
+def uncommon(defs,used,unc):
+    # examines the single-word prepositions that have not have not been
+    #   analyzed in the G&S paper
+    uwds = set() # another set of these words, as in 'unc'
+    usen = set() # senses for these prepositions
+    ucnt = Counter() # the number of senses for these prepositions
+    udefs = 0 # a count of the total number of senses for these prepositions
+    for i in defs:
+        if " " in i:
+            continue
+        if i not in used:
+            continue
+        prep = i[:i.index("_")]
+        if prep not in unc:
+            continue
+        uwds.add(prep)
+        usen.add(i)
+        ucnt[prep] += 1
+        udefs += 1
+    return uwds, usen, ucnt, udefs
+
 # tributary prepositions in PDEP
 trib = ["'cept", "'gainst", "'mongst", "'pon", 'afore', 'agin', 'amidst', 'betwixt', 'fore', 'frae', 'neath', 'nigh', "o'", "o'er", 'outta', 'outwith', 'sans', "thro'", 'thru', 'thwart', 'till', 'toward', 'upon', 'while']
 
