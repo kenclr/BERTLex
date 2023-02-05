@@ -117,6 +117,17 @@ def no_insts(defs,used):
         unused.add(i)
     return unused
 
+def polyused(used):
+    # identifying PDEP senses that have a space in the sense 
+    #   also indicating that the tagged instances were viewed
+    #   as polysemous
+    poly = set()
+    for i in used:
+        sno = i[i.index("_")+1:]
+        if " " in sno:
+            poly.add(i)
+    return poly
+
 # tributary prepositions in PDEP
 trib = ["'cept", "'gainst", "'mongst", "'pon", 'afore', 'agin', 'amidst', 'betwixt', 'fore', 'frae', 'neath', 'nigh', "o'", "o'er", 'outta', 'outwith', 'sans', "thro'", 'thru', 'thwart', 'till', 'toward', 'upon', 'while']
 
