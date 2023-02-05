@@ -128,6 +128,23 @@ def polyused(used):
             poly.add(i)
     return poly
 
+def csenses(crows):
+    # adds the sense numbers, appending to the preposition
+    # identifying instances with polysemous tags
+    csenses = Counter()
+    poly = Counter()
+    for num_rows_visited, row in enumerate(crows):
+        prep = row['prep'].lower()
+        if row['sense'] in ['unk', 'x', 'pv', 'adverb', '1(!)', '']:
+            continue
+        if row['inst'] in [577203,]:
+            continue
+        sense = prep + '_' + row['sense']
+        csenses[sense] += 1
+        if ' ' in row['sense']:
+            poly[sense] += 1
+    return csenses
+
 # tributary prepositions in PDEP
 trib = ["'cept", "'gainst", "'mongst", "'pon", 'afore', 'agin', 'amidst', 'betwixt', 'fore', 'frae', 'neath', 'nigh', "o'", "o'er", 'outta', 'outwith', 'sans', "thro'", 'thru', 'thwart', 'till', 'toward', 'upon', 'while']
 
