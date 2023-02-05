@@ -145,6 +145,17 @@ def csenses(crows):
             poly[sense] += 1
     return csenses
 
+def mwe(defs):
+    # identifies the multiple-word entries and senses in PDEP,
+    #   indicating entries needing further analysis
+    mwe_ents = set()
+    mwe_sens = set()
+    for i in defs:
+        if " " in i:
+            mwe_sens.add(i)
+            mwe_ents.add(i[:i.index("_")])
+    return mwe_ents, mwe_sens
+
 # tributary prepositions in PDEP
 trib = ["'cept", "'gainst", "'mongst", "'pon", 'afore', 'agin', 'amidst', 'betwixt', 'fore', 'frae', 'neath', 'nigh', "o'", "o'er", 'outta', 'outwith', 'sans', "thro'", 'thru', 'thwart', 'till', 'toward', 'upon', 'while']
 
