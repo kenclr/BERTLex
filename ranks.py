@@ -104,6 +104,28 @@ def corp2(df):
     print("Correct:   ", correct)
     return test, preds, correct
 
+def dfsanal(dfscores):
+    # Shows the number of predictions having more or fewer 50 training
+    #   frequencies, indicating with the average coverage and the average
+    #   optimal values
+    fhi = 0
+    ohi = 0
+    fhcnt = 0
+    flo = 0
+    olo = 0
+    flcnt = 0
+    for _, row in dfscores.iterrows():
+        if row.freq >= 50:
+            fhi += row.cover
+            ohi += row.opt
+            fhcnt += 1
+        else:
+            flo += row.cover
+            olo += row.opt
+            flcnt += 1
+    print("High freq: ", fhcnt, round(fhi/fhcnt,2), "High opt:", round(ohi/fhcnt,3))
+    print("Low freq:  ", flcnt, round(flo/flcnt,2), "Low opt: ", round(olo/flcnt,3))
+            
 def corr(df):
     labels = Counter()
     correct = Counter()
