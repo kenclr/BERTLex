@@ -335,26 +335,6 @@ unmasker("Pieces of the aircraft were strewn [MASK] a vast area .")
 unmasker("For it is scientific fact that women are different , quite [MASK] from the obvious .")
 """
 
-def nearest(df):
-    testlab = Counter()
-    near = Counter()
-    #count = 0
-    for _, row in df.iterrows():
-        freq = row.label_freq_in_train
-        if freq <= 50: # used > 50 for the low freq
-            continue
-        label = row.label
-        label = label[:label.index(":")]
-        testlab[label] += 1
-        label_1 = row.label_1
-        label_1 = label_1[:label_1.index("#")]
-        if label == label_1:
-            near[label] += 1
-        #count += 1
-        #if count == 10:
-            #break
-    return testlab, near
-
 def score_low(df):
     zerocnt = 0
     for _, row in df.iterrows():
