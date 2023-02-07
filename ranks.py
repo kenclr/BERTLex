@@ -126,6 +126,26 @@ def dfsanal(dfscores):
     print("High freq: ", fhcnt, round(fhi/fhcnt,2), "High opt:", round(ohi/fhcnt,3))
     print("Low freq:  ", flcnt, round(flo/flcnt,2), "Low opt: ", round(olo/flcnt,3))
             
+def nearest(df):
+    # Counting the number of senses having more or fewer 50 number of training 
+    #   instances, incrementing the count of matches when the nearest training
+    #   instance has the same as the test query.
+    # Change the freq based on which is desired
+    testlab = Counter() # the number of test queries for the 'freq'
+    near = Counter() # those for which label_1 is the same as the test
+    for _, row in df.iterrows():
+        freq = row.label_freq_in_train
+        if freq <= 50: # used > 50 for the low freq
+            continue
+        label = row.label
+        label = label[:label.index(":")]
+        testlab[label] += 1
+        label_1 = row.label_1
+        label_1 = label_1[:label_1.index("#")]
+        if label == label_1:
+            near[label] += 1
+    return testlab, near
+
 def corr(df):
     labels = Counter()
     correct = Counter()
