@@ -146,6 +146,52 @@ def nearest(df):
             near[label] += 1
     return testlab, near
 
+def rank(df):
+    # Creates dataframes of ranks and scores as described in Section 6.1,
+    #   "Ranking the Predictions" showing the descriptions of each column
+    dfranks = pd.DataFrame(columns = ['sense', 'freq', 'found', 'score', 'opt', 'label', 'train'])
+    testq = Counter() # the number of test queries with each sense (label)
+    freqs = Counter() # the number of the training data for the label 
+    found = Counter() # the addition for each row for each test query
+    scores = Counter() # the scores for the test query
+    opts = Counter() # the optimum possibility for the test query
+    for _, row in df.iterrows():
+        freq = row.label_freq_in_train
+        tfreq = freq
+        label = row.label
+        label = label[:label.index(":")]
+        if row.lemma == 'circa': # this doesn't have 50 predictions
+            continue
+        if freq > 1000:
+            continue
+        if freq > 50:
+            freq = 50
+        testq[label] += 1 # how many with this label
+        freqs[label] += freq # adding this for each label
+        ranks = [] # for which the predictions for this row
+        opt = (freq * (freq + 1))/2 # optimum score
+        score = 0
+        for i in range(50):
+            lab = getattr(row, f"label_{i+1}")
+            lab = lab[:lab.index("#")]
+            if lab == label:
+                ranks.append(i+1)
+                if i < freq:
+                    score += freq - i
+        found[label] += len(ranks)
+        scores[label] += score
+        opts[label] += opt
+        dfranks.loc[len(dfranks.index)] = [label, freq, len(ranks), score, int(opt), row.label, tfreq]
+    dfscores = pd.DataFrame(columns = ['sense', 'tasks', 'freq', 'in50', 'cover', 'score', 'opt'])
+    for i in testq:
+        tasks = testq[i]
+        pct = scores[i]/opts[i]
+        in50 = found[i]/freqs[i]
+        dfscores.loc[len(dfscores.index)] = [i, tasks, int(freqs[i]/testq[i]),
+                                             str(found[i])+'/'+str(freqs[i]), round(in50,2),
+                                             str(scores[i])+'/'+str(int(opts[i])), round(pct,3)] # round(pct,3)]
+    return dfranks, dfscores
+
 def corr(df):
     labels = Counter()
     correct = Counter()
@@ -439,57 +485,6 @@ def avescore(df,sense):
         dfaves.loc[len(dfaves.index)] = [i, num[i], tr[i], ave, avedists]
     return dfaves
 
-    
-        
-def rank(df):
-    dfranks = pd.DataFrame(columns = ['sense', 'freq', 'found', 'score', 'opt', 'label', 'train'])
-    testq = Counter()
-    freqs = Counter()
-    found = Counter()
-    scores = Counter()
-    opts = Counter()
-    for _, row in df.iterrows():
-        freq = row.label_freq_in_train
-        tfreq = freq
-        label = row.label
-        label = label[:label.index(":")]
-        if row.lemma == 'circa':
-            continue
-        if freq > 1000:
-            continue
-        if freq > 50:
-            freq = 50
-        testq[label] += 1
-        freqs[label] += freq
-        ranks = []
-        opt = (freq * (freq + 1))/2 # optimum score
-        score = 0
-        for i in range(50):
-            lab = getattr(row, f"label_{i+1}")
-            lab = lab[:lab.index("#")]
-            if lab == label:
-                ranks.append(i+1)
-                if i < freq:
-                    score += freq - i
-        found[label] += len(ranks)
-        scores[label] += score
-        opts[label] += opt
-        dfranks.loc[len(dfranks.index)] = [label, freq, len(ranks), score, int(opt), row.label, tfreq]
-        if label.startswith('on_20'):
-            print(label, '\t', freq, '\t', len(ranks), '\t', ranks, '\t', score, '\t', int(opt))
-    dfscores = pd.DataFrame(columns = ['sense', 'tasks', 'freq', 'in50', 'cover', 'score', 'opt']) #'opt'])
-    for i in testq:
-        tasks = testq[i]
-        pct = scores[i]/opts[i]
-        in50 = found[i]/freqs[i]
-        dfscores.loc[len(dfscores.index)] = [i, tasks, int(freqs[i]/testq[i]),
-                                             str(found[i])+'/'+str(freqs[i]), round(in50,2),
-                                             str(scores[i])+'/'+str(int(opts[i])), round(pct,3)] # round(pct,3)]
-        #print(i, '\t', testq[i], '\t', int(freqs[i]/testq[i]), '\t', str(found[i])+'/'+str(freqs[i]), '\t', round(in50,2),
-        #      '\t', str(scores[i])+'/'+str(int(opts[i])), '\t', round(pct,3))
-    return dfranks, dfscores
-
-            
 def rank1(df):
     for k in range(0,len(df)):
         row = df.loc[k]
