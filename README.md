@@ -1,14 +1,6 @@
 # Introduction
 
-**BERTological Lexicography for Prepositions** : Contextualized word embedding (CWE) models such as BERT (Devlin et al. (2019)) [[1]](#1) have been used in many NLP tasks. Gessler and
-Schneider (2021) (G&S) [[2]](#2) focus on the use of BERT in disambiguating
-rare senses of nouns, verbs, and prepositions. In examining preposition disambiguation, their results are comparable to earlier efforts and
-achieving better results than problems described in Litkowski (2013) [[3]](#3).
-Earlier efforts achieved results using traditional NLP methods, characterizing syntactic and semantic behaviors. BERTology provides a new
-resource and additional perspective that might assist in usual lexicographic procedures. We begin exactly at the place where G&S ended,
-using its methods, adding the further property of keeping a link to the
-instances in the Pattern Dictionary of English Prepositions (PDEP,
-Litkowski (2014)) [[4]](#4), enabling further lexicographic analysis.
+**BERTological Lexicography for Prepositions** : Contextualized word embedding (CWE) models such as BERT (Devlin et al. (2019)) [[1]](#1) have been used in many NLP tasks. Gessler and Schneider (2021) (G&S) [[2]](#2) focus on the use of BERT in disambiguating rare senses of nouns, verbs, and prepositions. In examining preposition disambiguation, their results are comparable to earlier efforts and achieving better results than problems described in Litkowski (2013) [[3]](#3). Earlier efforts achieved results using traditional NLP methods, characterizing syntactic and semantic behaviors. BERTology provides a new resource and additional perspective that might assist in usual lexicographic procedures. We begin exactly at the place where G&S ended, using its methods, adding the further property of keeping a link to the instances in the Pattern Dictionary of English Prepositions (PDEP, Litkowski (2014)) [[4]](#4), enabling further lexicographic analysis. Our paper provides a lexicological analysis of the instances, which may provide the basis for lexicography.
 
 This is the code accompanying the paper (see [[5]](#5) [Citation](#citation)) [_BERTological Lexicography for Prepositions_][(http://www.clres.com/online-papers/BERTLex.pdf)].
 
