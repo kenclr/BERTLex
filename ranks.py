@@ -192,6 +192,61 @@ def rank(df):
                                              str(scores[i])+'/'+str(int(opts[i])), round(pct,3)] # round(pct,3)]
     return dfranks, dfscores
 
+def avescore(df,sense):
+    """
+    Creates a dataframe containing the average distances for each
+    corpus instance having the sense in the test query
+    
+    The columns are:
+        corp  : the corpus instances
+        occ   : the number of test queries containing the corpus instance
+        locs  : the sum of the label numbers of the corpus instances
+        ave   : the average of the locations (locs/occ)
+        dists : the average distances for the corpus instances
+
+    Parameters
+    ----------
+    df : dataframe containing the predictions for each test query
+    sense : a string giving a preposition sense, with the preposition,
+        an underscore, and the sense number
+
+    Returns
+    -------
+    dfaves (dataframe)
+        containing the colums above
+
+    """
+    dfaves = pd.DataFrame(columns = ['corp', 'occ', 'locs', 'ave', 'dists'])
+    tr = Counter() # the positions for the corpus instance
+    num = Counter() # the occurrences for the corpus instance
+    dists = Counter() # the sum of the distances for the occurrences
+    for _, row in df.iterrows():
+        # remove the corpus instance from the label and goes to the next
+        #   row if the lable isn't the desired sense
+        label = row.label
+        label = label[:label.index(":")]
+        if label != sense:
+            continue
+        # examines the 50 prediction labels and distances 
+        for i in range(50):
+            lab = getattr(row, f"label_{i+1}")
+            dist = getattr(row, f"distance_{i+1}")
+            # gets the corpus instance of the label_{i+1}
+            corp = lab[lab.index("#"):]
+            corp = corp[corp.rfind("#")+1:]
+            lab = lab[:lab.index("#")]
+            # when we have a match with the sense, we increment
+            if lab == label:
+                tr[corp] += i + 1
+                num[corp] += 1
+                dists[corp] += dist
+    for i in tr:
+        ave = round(tr[i]/num[i],1)
+        avedists = round(dists[i]/num[i],3)
+        #print(ave, '\t', i, '\t', tr[i], '\t', num[i])
+        dfaves.loc[len(dfaves.index)] = [i, num[i], tr[i], ave, avedists]
+    return dfaves
+
 def corr(df):
     labels = Counter()
     correct = Counter()
