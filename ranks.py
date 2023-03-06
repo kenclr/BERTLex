@@ -247,6 +247,22 @@ def avescore(df,sense):
         dfaves.loc[len(dfaves.index)] = [i, num[i], tr[i], ave, avedists]
     return dfaves
 
+def score_low(df):
+    # Identifies test queries that have a nearest neighbor equal t0 a 
+    #   distance of 0.0, indicating a duplication in different corpora
+    zerocnt = 0
+    for _, row in df.iterrows():
+        dist = row.distance_1
+        if dist == 0:
+            zerocnt += 1
+            freq = row.label_freq_in_train
+            if freq > 50:
+                amt = "high"
+            else:
+                amt = "low"
+            print(row.label, '\t', row.label_1, '\t', amt)
+    print("Zero distances: ", zerocnt)
+
 def corr(df):
     labels = Counter()
     correct = Counter()
@@ -435,20 +451,6 @@ unmasker("They strolled [MASK] the gardens , enjoying the beautiful day .")
 unmasker("Pieces of the aircraft were strewn [MASK] a vast area .")
 unmasker("For it is scientific fact that women are different , quite [MASK] from the obvious .")
 """
-
-def score_low(df):
-    zerocnt = 0
-    for _, row in df.iterrows():
-        dist = row.distance_1
-        if dist == 0:
-            zerocnt += 1
-            freq = row.label_freq_in_train
-            if freq > 50:
-                amt = "high"
-            else:
-                amt = "low"
-            print(row.label, '\t', row.label_1, '\t', amt)
-    print("Zero distances: ", zerocnt)
 
 def cover(df,hi,lo):
     count = 0
