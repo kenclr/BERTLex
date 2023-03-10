@@ -1,3 +1,6 @@
 [submodule "data/streusle"]
 	path = data/streusle
 	url = git@github.com:nert-nlp/streusle.git
+[submodule "BERTLex"]
+	path = BERTLex
+	url = https://github.com/kenclr/BERTLex
