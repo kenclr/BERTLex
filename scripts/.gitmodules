@@ -1,6 +1,0 @@
-[submodule "bert-has-uncommon-sense"]
-	path = bert-has-uncommon-sense
-	url = https://github.com/lgessler/bert-has-uncommon-sense
-[submodule "data/streusle"]
-	path = data/streusle
-	url = git@github.com:nert-nlp/streusle.git
